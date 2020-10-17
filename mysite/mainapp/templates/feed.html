@@ -1,0 +1,12 @@
+ {% extends "base.html" %}
+{% load static %}
+
+ {% block main %}
+
+ {% for article in articles %}
+
+    <input onclick="location.href='{% url 'articlepage' article_id=article.id %}'" type="image" src="{% get_media_prefix %}{{article.image}}" >
+
+ {% endfor %}
+
+ {% endblock %}

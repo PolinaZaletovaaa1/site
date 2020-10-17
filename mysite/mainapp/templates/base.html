@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+<style>
+   body {
+    background-color:#5fAf33
+   }
+</style>
+<title>Pictures</title>
+</head>
+<body leftmargin="100" rightmargin="100">
+
+<h1 align="center">Pictures</h1>
+
+
+
+{% if user.is_authenticated %}
+
+<button style = "border-radius: 25px;" type="submit"  onclick="location.href='{% url 'userpage' username=user.get_username  %}'">Моя страница</button>
+<button style = "border-radius: 25px;" type="submit"  onclick="location.href='{% url 'feedpage' %}'">Лента</button>
+<button style = "border-radius: 25px;" type="submit"  onclick="location.href='{% url 'logout' %}'">Выйти</button>
+
+
+<br>
+
+{% endif %}
+
+{% block register %}
+{% endblock %}
+{% block login %}
+{% endblock %}
+{% if user.is_authenticated %}
+{% block main %}
+{% endblock %}
+{% endif %}
+
+
+</body>
+</html>

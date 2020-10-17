@@ -1,0 +1,26 @@
+ {% extends "base.html" %}
+ {% load static %}
+ {% block main %}
+
+{% if user.is_superuser %}
+ <button type="submit"  onclick="location.href='{% url 'adminpage' %}'">Функции администратора</button>
+  <br>
+<br>
+{% endif %}
+
+    <form method = "post" enctype="multipart/form-data">
+        {% csrf_token %}
+<p>{{ articleform.image.label_tag }} {{ articleform.image }}
+    <p>{{ articleform.name.label_tag }} {{ articleform.name }}
+        <p>{{ articleform.description.label_tag }}<p> {{ articleform.description }}
+  <p>
+<button type="submit">Загрузить</button>
+    </form>
+
+ {% for article in articles %}
+   <input onclick="location.href='{% url 'articlepage' article_id=article.id %}'" type="image" src="{% get_media_prefix %}{{article.image}}" >
+ {% endfor %}
+
+
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends  'base.html' %}
+
+
+{% block login %}
+
+
+<h4>Log in to your account</h4>
+
+<form method="post">
+{% csrf_token %}
+<input type="hidden" name="next" value="{{ next }}">
+
+{{ form.as_p }}
+
+<button type="submit"  class="btn btn-primary btn-block">Log in</button>
+<button type="button"  class="btn btn-primary btn-block" onclick="location.href='{% url 'register' %}'">Register</button>
+</form>
+
+
+{% endblock %}
